@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Module 5: React en 5 minutes</title>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <h1>React en 5 minutes</h1>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function ComposentSimpleH6() {
+            return (
+                <div>
+                    <h2>Pure compo h6</h2>
+                </div>
+            )
+        }
+
+        function HelloWord({label, age}) {
+            return (
+                <div>
+                    <h2>Hello {label}</h2>
+                    <h3>Tu as {age} ans</h3>
+                    <ComposentSimpleH6></ComposentSimpleH6>
+                </div>
+            )
+        }
+
+        class MonCompoMaxime extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <p>Bonjour {this.props.label} {this.props.age} {this.props.genre}</p>
+                    </div>
+                )
+            }
+        }
+
+        // var e = React.createElement
+        ReactDOM.render(
+            // e(ComposentSimpleH6),
+            <div> 
+                <HelloWord label={"Maxime"} age="18"/>
+                <HelloWord label={"Pierre"} age="25"/>
+                <MonCompoMaxime label="Maxime" age="18" genre="homme"/>
+            </div>,
+            document.getElementById("root")
+        )
+    </script>
+</body>
+</html>

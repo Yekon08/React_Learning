@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Module 7 : ES6</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <h1>Module 7 : ES6</h1>
+
+    <div id="root">
+        <button onclick="compteur('Joe')">Compteur</button>
+    </div>
+
+    <script type="text/babel">
+        // var name = "toto" Remplacer par Let
+        let name = "Maxime"
+        name = "Joe"
+
+        const Key = "HUIERHGUIDFHGUIDFHGUI"
+        // key = "nouvelle clé" Impossible avec une variable Const
+
+        class Vehicule {
+            constructor(model, annee){
+                this.model = model
+                this.annee = annee
+            }
+        }
+
+        class Voiture extends Vehicule {
+            constructor(model, annee, color){
+                super(model, annee)
+                this.color = color
+            }
+
+            updateAnnee(annee){
+                this.annee = annee
+            }
+        }
+
+        const maVoiture = new Voiture("twingo", 2015, 'bleue')
+        console.log('mavoiture', maVoiture)
+        maVoiture.updateAnnee(2000)
+        console.log(maVoiture.annee)
+
+        function maFonction(x, y = 5){
+            console.log("x vaut " + x + " y vaut " + y)
+        }
+        maFonction(6)
+
+        // Besoin d'un transpilateur comme Babel par exemple
+        // import * as math from 'math'
+        // console.log(math.multiplier(3,2))
+        // console.log(math.pi))
+
+        // import {multiplier, pi} from 'math'
+        // console.log(math.multiplier(3,2))
+        // console.log(math.pi))
+
+
+        // Arrow Function
+
+        function multiplier(x, y) {
+            console.log("multiplier" + x*y)
+        }
+
+        let mul = (x,y) => { 
+            console.log("multiplier" + x*y)
+        }
+        multiplier(3,6)
+        mul(5,5)
+
+        let compteur = (texte) => {
+            console.log(texte)
+        }
+
+        function Personne() {
+            this.age = 10
+            // setInterval(function grandir() {
+            //     this.age++
+            //     console.log("this.age vaut", this.age)
+            // }.bind(this), 1000)
+
+            setInterval(() => {
+                this.age++
+                console.log("this.age vaut", this.age)
+            }, 1000);
+        }
+
+        let p = new Personne()
+        console.log(p)
+
+        // Promise 
+
+        function callbackSuccess(msg){
+            console.log("Réussi" +msg)
+        }
+
+        function callbackError(msg){
+            console.log("Erreur" +msg)
+        }
+
+        function ancienne(callbackSuccess, callbackError) {
+            if (Math.random() > .5) {
+                callbackSuccess("Success")
+            } else {
+                callbackError("Error")
+            }
+        }
+
+        // ancienne(callbackSuccess, callbackError)
+
+        function truc() {
+            return new Promise((resolve, reject) => {
+                if (Math.random() > .5) {
+                    resolve("Success")
+                } else {
+                    reject("Error")
+                }
+            })
+        }
+
+        const prom = truc()
+
+        prom.then(callbackSuccess, callbackError)
+    </script> 
+</body>
+</html>

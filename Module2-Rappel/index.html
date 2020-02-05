@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Module 2 Rappel De Base</title>
+</head>
+<body>
+    <h1>Rappel:</h1>
+    <div id="root">
+
+    </div>
+
+    <script>
+        var name = "Maxime"
+        var age = 18
+        var books = []
+        var book = {}
+
+        console.log('name: ' + name)
+
+        function maFonction(e) {
+            var chaine = "age: " + e
+            return chaine 
+        }
+
+        var a = maFonction(19)
+        console.log(a)
+
+        var h2 = document.createElement("h2")
+        h2.innerText = "Mon h2"
+        document.getElementById('root').appendChild(h2)
+
+        var monArray = []
+        monArray.push('a')
+        monArray.push('b')
+        monArray.push('c')
+        console.log(monArray)
+
+        for (var i = 0; i<monArray.length ; i++) {
+            var ar = monArray[i]
+            console.log(ar)
+        }
+
+        var monObj = {
+            nom: "Joe",
+            age: "45"
+        }
+        console.log(monObj)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Module 6: JSX</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <h1>JSX</h1>
+
+    <div id="root"></div>
+
+    <script>
+        // var h = document.createElement('h1')
+        // var t = document.createTextNode('Hello World')
+        // h.appendChild(t)
+        // document.body.appendChild(h)
+        // var elt = <h1>Hello World</h1>
+    </script>
+
+    <script type="text/babel">
+        const elt = <h1>Hello World</h1>
+        const elt2 = <h1>Hello World2</h1>
+        const x = 2
+        let affichage 
+
+        function CompoSimple() {
+            if(x === 2) {
+                affichage = elt2
+            } else {
+                affichage = elt
+            }
+
+            return (
+                <div>
+                    {affichage}
+                </div>
+            )
+        }
+
+        const MonComposent = {
+            Caroussel: function carrousel(props) {
+                return(
+                    <div>imagine caroussel de couleur {props.color}</div>
+                )
+            }
+        }
+
+        function CarousselBleu() {
+            return <MonComposent.Caroussel color="bleu" />
+        }
+        function CarousselRouge() {
+            return <MonComposent.Caroussel color="rouge" />
+        }
+
+        function ComposentAP(props) {
+            return(<div>Hello {props.nom} {props.prenom}</div>)
+        }
+
+
+
+        // autre syntaxe
+        function ComposentA({nom, prenom, age}) {
+            return(<div>Hello {nom} {prenom} {age}</div>)
+        }
+
+        function ComposentB(props) {
+            return(
+                <div>
+                    <h1>Composent B</h1>
+                    <ComposentA {...props}></ComposentA>
+                </div>
+                )
+        }
+
+
+
+        ReactDOM.render(
+            <div>
+                <CarousselBleu/>
+                <CompoSimple/>
+                <ComposentB nom='Pierre' prenom='Cailloux' age='18'/>
+            </div>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
